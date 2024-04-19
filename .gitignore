@@ -1,41 +1,83 @@
-# Compiled Lua sources
-luac.out
+local function ShowNotification(message)
+    local NotificationGui = Instance.new("ScreenGui")
+    local NotificationFrame = Instance.new("Frame")
+    local NotificationText = Instance.new("TextLabel")
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+    NotificationGui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+    NotificationGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+    NotificationFrame.Parent = NotificationGui
+    NotificationFrame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+    NotificationFrame.Position = UDim2.new(0.5, -150, 1, 1)
+    NotificationFrame.Size = UDim2.new(0, 300, 0, 60)
 
-# Precompiled Headers
-*.gch
-*.pch
+    NotificationText.Parent = NotificationFrame
+    NotificationText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    NotificationText.BackgroundTransparency = 1.000
+    NotificationText.Size = UDim2.new(1, 0, 1, 0)
+    NotificationText.Font = Enum.Font.SourceSansSemibold
+    NotificationText.Text = message
+    NotificationText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    NotificationText.TextSize = 24.000
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+    NotificationFrame:TweenPosition(UDim2.new(0.5, -150, 0.8, -30), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1, true)
+    wait(5)
+    NotificationFrame:TweenPosition(UDim2.new(0.5, -150, 1, 1), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1, true)
+    wait(1)
+    NotificationGui:Destroy()
+end
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+ShowNotification("Script hecho por AlanBakersFF")
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+-- Crear el menú
+local MenuGui = Instance.new("ScreenGui")
+MenuGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+MenuGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local MenuFrame = Instance.new("Frame")
+MenuFrame.Parent = MenuGui
+MenuFrame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+MenuFrame.Position = UDim2.new(0.5, -100, 0.5, -75)
+MenuFrame.Size = UDim2.new(0, 200, 0, 150)
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Parent = MenuFrame
+TitleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.BackgroundTransparency = 1.000
+TitleLabel.Size = UDim2.new(1, 0, 0, 30)
+TitleLabel.Font = Enum.Font.SourceSansSemibold
+TitleLabel.Text = "Menú"
+TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.TextSize = 20.000
+
+-- Crear la opción "Hitbot Expander"
+local HitbotExpanderLabel = Instance.new("TextLabel")
+HitbotExpanderLabel.Parent = MenuFrame
+HitbotExpanderLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HitbotExpanderLabel.BackgroundTransparency = 1.000
+HitbotExpanderLabel.Position = UDim2.new(0, 10, 0, 40)
+HitbotExpanderLabel.Size = UDim2.new(1, -20, 0, 30)
+HitbotExpanderLabel.Font = Enum.Font.SourceSans
+HitbotExpanderLabel.Text = "Hitbot Expander: 10"
+HitbotExpanderLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+HitbotExpanderLabel.TextSize = 18.000
+
+local HitbotExpanderSlider = Instance.new("TextButton")
+HitbotExpanderSlider.Parent = MenuFrame
+HitbotExpanderSlider.BackgroundColor3 = Color3.fromRGB(125, 125, 125)
+HitbotExpanderSlider.Position = UDim2.new(0, 10, 0, 80)
+HitbotExpanderSlider.Size = UDim2.new(1, -20, 0, 20)
+HitbotExpanderSlider.Font = Enum.Font.SourceSans
+HitbotExpanderSlider.Text = ""
+HitbotExpanderSlider.TextColor3 = Color3.fromRGB(0, 0, 0)
+HitbotExpanderSlider.TextSize = 14.000
+
+local SliderIndicator = Instance.new("Frame")
+SliderIndicator.Parent = HitbotExpanderSlider
+SliderIndicator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SliderIndicator.BorderSizePixel = 0
+SliderIndicator.Size = UDim2.new(0, 0, 1, 0)
+
+-- Función para actualizar el valor del deslizador
+local function UpdateSlider(value
 
